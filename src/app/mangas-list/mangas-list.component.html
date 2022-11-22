@@ -1,0 +1,33 @@
+<h1 class="display-5" id="noTouch">¡Bienvenido a Knight Readers!</h1>
+<h4 id="noTouch">Selecciona y compra un manga de tu preferencia.</h4>
+
+<h2>Lista de Obras</h2>
+
+<table class="table" id="noTouch">
+    <thead>
+        <tr>
+            <th>Portada</th>
+            <th>Titulo</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Cantidad</th>
+            <th>Comprar</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let manga of mangas" [ngClass]="{'on-sale': manga.onSale}">
+            <td><img [src]="manga.img_src" [alt]="manga.name" class="img-thumbnail"></td>
+            <td>{{manga.name}}</td>
+            <td>{{manga.price | currency}}</td>
+            <td><span *ngIf="manga.stock == 0" class="badge text-bg-danger">SIN STOCK</span> <span class="badge text-bg-success" *ngIf="manga.offer==true">OFERTA</span></td>
+            <td *ngIf="manga.stock > 0" id="botonera">
+                <!--se definen el quantity y el max en los atributos de la clase InputQuantityComponent-->
+                <!--NOTA: Input es con []; Output es con ()-->
+                <!--NOTA: el [(quantity)] es two way data binding, por lo que tambien controla al instrument.quantity-->
+                <app-input-quantity [(quantity)]="manga.quantity" [max]="manga.stock" class="d-flex"></app-input-quantity>
+            </td>
+            <td><button *ngIf="manga.stock > 0" (click)="addToCart(manga)" class="btn btn-primary">Comprar</button></td>
+        </tr>
+    </tbody>
+</table>

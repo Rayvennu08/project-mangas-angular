@@ -1,0 +1,32 @@
+img {
+    width: 350px;
+    height: 270px;
+}
+
+h1{
+  color: black;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-decoration: underline;
+  text-align: center;
+}
+
+h4, h2{
+text-align: center;
+}
+
+h2 {
+  text-decoration: underline;
+}
+
+.on-sale {
+    background-color: lightgreen;
+    border: solid 2px green;
+}
+
+#botonera {
+    border: none;
+}
+
+#noTouch{
+  user-select: none;
+}

@@ -1,0 +1,13 @@
+<h1>Carrito de compras</h1>
+
+<ul class="list-group">
+    <li *ngFor="let instrument of cartList" class="list-group-item">
+        {{instrument.name}} x {{instrument.quantity}} -- <span>{{instrument.price * instrument.quantity | currency}}</span>
+    </li>
+</ul>
+
+<ul *ngIf="cartList.length > 0" class="list-group mt-2">
+    <li class="list-group-item active">
+        Precio total: {{getTotalPrice() | currency}}
+    </li>
+</ul>
